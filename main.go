@@ -2,6 +2,7 @@ package main
 
 import (
 	"Kyoto/pkg/parser"
+	"fmt"
 	"github.com/antlr4-go/antlr/v4"
 	"os"
 )
@@ -35,7 +36,7 @@ func lex(code string) <-chan antlr.Token {
 func main() {
 	args := os.Args[1:]
 	if len(args) == 0 {
-		println("Usage: ./cyoto <SRC_FILES>")
+		fmt.Fprint(os.Stderr, "Usage: ./cyoto <SRC_FILES>")
 		return
 	}
 
@@ -43,7 +44,8 @@ func main() {
 		fileContent := readFile(file)
 
 		for token := range lex(fileContent) {
-			println(token.GetText())
+			fmt.Println(token.GetText())
 		}
+
 	}
 }
