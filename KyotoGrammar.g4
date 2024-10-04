@@ -1,18 +1,19 @@
 grammar KyotoGrammar;
 
-// There must be at least a main fn in the program
 program
     : classDeclaration*
     | implBlock*
+    | importStatement*
+    | cdeclStatement*
     | functionDeclaration*
     ;
 
 importStatement
-    : 'import' STRING
+    : 'import' IDENTIFIER ';'
     ;
 
 cdeclStatement
-    : 'cdecl' IDENTIFIER '(' parameterList? ')' type
+    : 'cdecl' IDENTIFIER '(' parameterList? (',' '...')? ')' type ';'
     ;
 
 classDeclaration
@@ -41,7 +42,7 @@ parameterList
     ;
 
 parameter
-    : IDENTIFIER type
+    : type IDENTIFIER
     ;
 
 type
@@ -135,4 +136,4 @@ STRING      : '"' ~'"'* '"';
 BOOLEAN     : 'true' | 'false';
 
 IDENTIFIER : [a-zA-Z_][a-zA-Z0-9_]*;
-WS          : [ \t\r\n]+ -> skip ;
+WS          : [ \t\r\n]+ -> skip;
