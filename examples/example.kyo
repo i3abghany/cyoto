@@ -1,6 +1,6 @@
 import std;
 
-cdecl printf(str, ...) i32;
+cdecl printf(str f, ...) i32;
 
 class B {
     i32 x;
