@@ -1,0 +1,52 @@
+import std;
+
+cdecl printf(str, ...) i32;
+
+class B {
+    i32 x;
+    f64 y;
+}
+
+class A {
+    i32 a;
+    pub B b;
+}
+
+impl B {
+    pub new(i32 _x, f64 _y) B {
+        return B { x: _x, y: _y };
+    }
+
+    pub + (B b) B {
+        return B { x: x + b.x, y: y + b.y };
+    }
+}
+
+impl A {
+    pub new(i32 _a, i32 _bx, i32 _by) A {
+        return A { a: _a, b: B { x: _bx, y: _by } };
+    }
+
+    pub + (A a) A {
+        return A { a: a + a.a, b: b + a.b };
+    }
+}
+
+fn print(A a) {
+    printf("a: %d\n", a.a);
+}
+
+fn fib(i32 n) i32 {
+    if n <= 1 {
+        return n;
+    }
+    return fib(n - 1) + fib(n - 2);
+}
+
+fn main() {
+    A a = A { a: 1, b: B { x: 2, y: 3.0 } };
+    A b = A { a: 4, b: B { x: 5, y: 6.0 } };
+    A c = a + b;
+    print(c);
+    printf("fib(10) = %d\n", fib(10));
+}
