@@ -24,7 +24,11 @@ implBlock
     ;
 
 implBody
-    : ('pub'? functionDeclaration)*
+    : (methodDeclaration)*
+    ;
+
+methodDeclaration
+    : 'pub'? 'fn' (IDENTIFIER | '+' | '-' | '*' | '/') '(' ('self' ',')? parameterList? ')' type block
     ;
 
 functionDeclaration
