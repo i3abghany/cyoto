@@ -55,16 +55,16 @@ type
     ;
 
 statement
-    : (variableDeclaration
+    : ((variableDeclaration
     | assignment
+    | breakStatement
+    | continueStatement
     | functionCall
-    | returnStatement
+    | returnStatement) + ';')
     | ifStatement
     | whileStatement
     | forStatement
-    | breakStatement
-    | continueStatement
-    | block) ';'
+    | block
     ;
 
 variableDeclaration
