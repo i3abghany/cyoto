@@ -1,12 +1,17 @@
-Kyoto.exe: gen main.go
-	go build
+SRC_FILES=main.go utils.go visitor.go parse.go interpret.go interpret_test.go
 
-gen: KyotoGrammar.g4
+cyoto: $(SRC_FILES) pkg/parser/kyotogrammar*
+	go fmt
+	go build -o cyoto
+
+gen: pkg/parser/kyotogrammar%
+
+pkg/parser/kyotogrammar%: KyotoGrammar.g4
 	mkdir -p ./pkg/parser
-	antlr4 -Dlanguage=Go ./KyotoGrammar.g4 -o ./pkg/parser
+	antlr4 -Dlanguage=Go ./KyotoGrammar.g4 -o ./pkg/parser -visitor
 
 clean:
 	rm -f ./pkg/parser/*
-	rm -f Kyoto.exe
+	rm -f cyoto
 
 .PHONY: gen clean
