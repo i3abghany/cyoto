@@ -1,8 +1,10 @@
 SRC_FILES=main.go utils.go visitor.go parse.go interpret.go interpret_test.go
 
+test: cyoto
+	go test
+
 cyoto: $(SRC_FILES) pkg/parser/kyotogrammar*
-	go fmt
-	go build -o cyoto
+	go fmt && go build -o cyoto
 
 gen: pkg/parser/kyotogrammar%
 
