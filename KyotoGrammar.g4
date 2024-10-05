@@ -1,7 +1,7 @@
 grammar KyotoGrammar;
 
 program
-    : (importStatement | cdeclStatement | classDeclaration | implBlock | functionDeclaration)*;
+    : (importStatement | cdeclStatement | classDeclaration | implBlock | functionDeclaration)* EOF;
 
 importStatement
     : 'import' IDENTIFIER ';'
@@ -112,25 +112,43 @@ block
     ;
 
 expression
-    : literal
-    | IDENTIFIER
-    | IDENTIFIER '{' initializerList? '}'
-    | IDENTIFIER '.' IDENTIFIER
-    | functionCall
-    | expression '?' expression ':' expression
-    | '(' expression ')'
-    | expression ('+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '<=' | '>' | '>=') expression
-    | ('+' | '-' | '!') expression
+    : literal                                   #literalExpr
+    | IDENTIFIER                                #variableExpr
+    | IDENTIFIER '{' initializerList '}'        #classLiteralExpr
+    | IDENTIFIER '.' IDENTIFIER                 #memberAccessExpr
+    | IDENTIFIER '(' argumentList ')'           #functionCallExpr
+    | '(' expression ')'                        #parenthesizedExpr
+    | expression '?' expression ':' expression  #ternaryExpr
+    | unaryOp expression                        #unaryExpr
+    | expression multiplicativeOp expression    #multiplicativeExpr
+    | expression additiveOp expression          #additiveExpr
+    | expression comparisonOp expression        #comparisonExpr
+    ;
+
+unaryOp
+    : '+' | '-' | '!'
+    ;
+
+additiveOp
+    : '+' | '-'
+    ;
+
+multiplicativeOp
+    : '*' | '/' | '%'
+    ;
+
+comparisonOp
+    : '==' | '!=' | '<' | '<=' | '>' | '>='
     ;
 
 initializerList
     : IDENTIFIER ':' expression (',' IDENTIFIER ':' expression)*;
 
 literal
-    : INTEGER
-    | FLOAT
-    | STRING
-    | BOOLEAN
+    : INTEGER #intLiteral
+    | FLOAT   #floatLiteral
+    | STRING  #stringLiteral
+    | BOOLEAN #booleanLiteral
     ;
 
 COMMENT     : ('//' ~[\r\n]* | '/*' .*? '*/') -> skip;
