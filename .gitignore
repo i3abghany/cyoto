@@ -6,4 +6,5 @@
 /dist/
 /out/
 /pkg/parser/*
-Kyoto.exe
+*.exe
+cyoto
