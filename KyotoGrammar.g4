@@ -1,12 +1,7 @@
 grammar KyotoGrammar;
 
 program
-    : classDeclaration*
-    | implBlock*
-    | importStatement*
-    | cdeclStatement*
-    | functionDeclaration*
-    ;
+    : (importStatement | cdeclStatement | classDeclaration | implBlock | functionDeclaration)*;
 
 importStatement
     : 'import' IDENTIFIER ';'
