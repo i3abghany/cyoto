@@ -8,9 +8,11 @@ import (
 func main() {
 	args := os.Args[1:]
 	if len(args) == 0 {
-		fmt.Fprint(os.Stderr, "Usage: ./cyoto <SRC_FILES>")
+		fmt.Fprintf(os.Stderr, "Usage: %s <SRC_FILES>", os.Args[0])
 		return
 	}
 
-	parse(readFile(args[0]))
+	p := Parse(ReadFile(args[0]))
+	i := NewInterpreter()
+	i.Interpret(p)
 }

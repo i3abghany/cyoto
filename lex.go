@@ -21,4 +21,3 @@ func lex(code string) <-chan antlr.Token {
 	}()
 	return ch
 }
-

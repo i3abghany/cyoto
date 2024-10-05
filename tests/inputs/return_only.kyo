@@ -1,0 +1,31 @@
+// NAME return_num
+// RET 123
+
+fn main() i32 {
+    return 123;
+}
+
+// END
+// NAME return_sum
+// RET 3
+
+fn main() i32 {
+    return 1 + 2;
+}
+
+// END
+
+// NAME return_product
+// RET 6
+
+fn main() i32 {
+    return 2 * 3;
+}
+
+// END
+
+// NAME return_sum_product
+// RET 7
+fn main() i32 {
+    return 1 + 2 * 3;
+}
