@@ -17,7 +17,7 @@ impl B {
         return B { x: _x, y: _y };
     }
 
-    pub fn + (self, B b) B {
+    pub fn + (B b) B {
         return B { x: x + b.x, y: y + b.y };
     }
 }
@@ -32,21 +32,21 @@ impl A {
     }
 }
 
-fn print(A a) void {
+fn print(A a) {
     printf("a: %d\n", a.a);
 }
 
 fn fib(i32 n) i32 {
-    if (n <= 1) {
+    if n <= 1 {
         return n;
     }
     return fib(n - 1) + fib(n - 2);
 }
 
-fn main() i32 {
+fn main() {
     A a = A { a: 1, b: B { x: 2, y: 3.0 } };
     A b = A { a: 4, b: B { x: 5, y: 6.0 } };
     A c = a + b;
     print(c);
-    return !printf("fib(10) = %d\n", fib(10));
+    printf("fib(10) = %d\n", fib(10));
 }
