@@ -14,5 +14,6 @@ func main() {
 
 	p := Parse(ReadFile(args[0]))
 	i := NewInterpreter()
-	i.Interpret(p)
+	ret := i.Interpret(p)
+	fmt.Printf("main returned %d\n", ret)
 }

@@ -53,7 +53,7 @@ func Test_VariableAssignment(t *testing.T) {
 			i := NewInterpreter()
 			r := i.Interpret(p)
 			if r != tc.Expected {
-				t.Errorf("got %d, want %d", r, tc.Expected)
+				t.Errorf("%s: got %d, want %d", name, r, tc.Expected)
 			}
 		}
 	})
@@ -68,7 +68,7 @@ func Test_Empty(t *testing.T) {
 			i := NewInterpreter()
 			r := i.Interpret(p)
 			if r != tc.Expected {
-				t.Errorf("got %d, want %d", r, tc.Expected)
+				t.Errorf("%s: got %d, want %d", name, r, tc.Expected)
 			}
 		}
 	})
@@ -83,7 +83,7 @@ func Test_ReturnOnly(t *testing.T) {
 			i := NewInterpreter()
 			r := i.Interpret(p)
 			if r != tc.Expected {
-				t.Errorf("got %d, want %d", r, tc.Expected)
+				t.Errorf("%s: got %d, want %d", name, r, tc.Expected)
 			}
 		}
 	})

@@ -30,7 +30,6 @@ func (i *Interpreter) Interpret(tree antlr.ParseTree) int {
 	switch t := tree.(type) {
 	case *parser.ProgramContext:
 		ret := i.V.VisitProgram(t)
-		log.Printf("main returned: %v", ret)
 		return ret.(int)
 	default:
 		log.Panicf("starting node `%T` is not a `program` ", t)

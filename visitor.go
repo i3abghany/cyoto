@@ -32,7 +32,6 @@ func (v *KyotoVisitor) VisitProgram(ctx *parser.ProgramContext) interface{} {
 
 	ret := v.VisitFunctionDeclaration(main)
 	if ret == nil {
-		log.Printf("implicit main return: 0")
 		return 0
 	} else {
 		return ret
