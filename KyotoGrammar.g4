@@ -114,6 +114,7 @@ block
 expression
     : literal
     | IDENTIFIER
+    | IDENTIFIER '{' initializerList? '}'
     | IDENTIFIER '.' IDENTIFIER
     | functionCall
     | expression '?' expression ':' expression
@@ -121,6 +122,9 @@ expression
     | expression ('+' | '-' | '*' | '/' | '%' | '==' | '!=' | '<' | '<=' | '>' | '>=') expression
     | ('+' | '-' | '!') expression
     ;
+
+initializerList
+    : IDENTIFIER ':' expression (',' IDENTIFIER ':' expression)*;
 
 literal
     : INTEGER
