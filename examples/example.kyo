@@ -43,6 +43,11 @@ fn fib(i32 n) i32 {
     return fib(n - 1) + fib(n - 2);
 }
 
+// This is a single-line comment
+
+/* This is
+   a  block comment */
+
 fn main() i32 {
     A a = A { a: 1, b: B { x: 2, y: 3.0 } };
     A b = A { a: 4, b: B { x: 5, y: 6.0 } };

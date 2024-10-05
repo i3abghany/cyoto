@@ -129,6 +129,8 @@ literal
     | BOOLEAN
     ;
 
+COMMENT     : ('//' ~[\r\n]* | '/*' .*? '*/') -> skip;
+
 INTEGER     : [0-9]+;
 FLOAT       : [0-9]+'.'[0-9]+;
 STRING      : '"' ~'"'* '"';
