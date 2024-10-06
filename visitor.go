@@ -22,7 +22,12 @@ func (v *KyotoVisitor) VisitProgram(ctx *parser.ProgramContext) interface{} {
 		if !ok {
 			log.Panic("not a function declaration")
 		}
-		functions[c.IDENTIFIER().GetText()] = c
+		_, ok = functions[c.IDENTIFIER().GetText()]
+		if ok {
+			log.Panicf("function redifinition: %s", c.IDENTIFIER().GetText())
+		} else {
+			functions[c.IDENTIFIER().GetText()] = c
+		}
 	}
 
 	main := functions["main"]
