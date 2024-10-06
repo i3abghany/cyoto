@@ -23,7 +23,7 @@ type TestCase struct {
 
 func readTest(name string) []TestCase {
 
-	content := readFile(fmt.Sprintf("tests\\inputs\\%s.kyo", name))
+	content := readFile(fmt.Sprintf("tests/inputs/%s.kyo", name))
 	cases := strings.Split(content, "// END")
 
 	var ret = make([]TestCase, len(cases))
