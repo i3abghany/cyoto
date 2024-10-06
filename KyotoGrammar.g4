@@ -112,8 +112,7 @@ block
     ;
 
 expression
-    : literal                                   #literalExpr
-    | IDENTIFIER                                #variableExpr
+    : IDENTIFIER                                #variableExpr
     | IDENTIFIER '{' initializerList '}'        #classLiteralExpr
     | IDENTIFIER '.' IDENTIFIER                 #memberAccessExpr
     | IDENTIFIER '(' argumentList ')'           #functionCallExpr
@@ -123,6 +122,7 @@ expression
     | expression multiplicativeOp expression    #multiplicativeExpr
     | expression additiveOp expression          #additiveExpr
     | expression comparisonOp expression        #comparisonExpr
+    | literal                                   #literalExpr
     ;
 
 unaryOp
