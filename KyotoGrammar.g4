@@ -116,8 +116,8 @@ expression
     | IDENTIFIER '{' initializerList '}'        #classLiteralExpr
     | IDENTIFIER '.' IDENTIFIER                 #memberAccessExpr
     | IDENTIFIER '(' argumentList ')'           #functionCallExpr
-    | '(' expression ')'                        #parenthesizedExpr
     | expression '?' expression ':' expression  #ternaryExpr
+    | '(' expression ')'                        #parenthesizedExpr
     | unaryOp expression                        #unaryExpr
     | expression multiplicativeOp expression    #multiplicativeExpr
     | expression additiveOp expression          #additiveExpr

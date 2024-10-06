@@ -170,3 +170,7 @@ func (v *KyotoVisitor) VisitUnaryExpr(ctx *parser.UnaryExprContext) interface{} 
 		return nil
 	}
 }
+
+func (v *KyotoVisitor) VisitParenthesizedExpr(ctx *parser.ParenthesizedExprContext) interface{} {
+	return v.Visit(ctx.Expression())
+}

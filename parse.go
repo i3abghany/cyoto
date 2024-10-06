@@ -5,10 +5,6 @@ import (
 	"github.com/antlr4-go/antlr/v4"
 )
 
-type KyotoListener struct {
-	*parser.BaseKyotoGrammarListener
-}
-
 func Parse(code string) parser.IProgramContext {
 	inputStream := antlr.NewInputStream(code)
 	lexer := parser.NewKyotoGrammarLexer(inputStream)

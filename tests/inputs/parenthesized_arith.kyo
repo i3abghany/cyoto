@@ -1,0 +1,98 @@
+// NAME bin_op_0
+// RET 18
+
+fn main() i32 {
+	return (((10) - 5) + 6 - (8)) / ((8) * 6) + (2) * 9;
+}
+
+
+// END
+
+// NAME bin_op_1
+// RET 3
+
+fn main() i32 {
+	return (((8) + 4) / 7 / (2)) + (3 / (1)) + 2 / (4);
+}
+
+
+// END
+
+// NAME bin_op_2
+// RET -6
+
+fn main() i32 {
+	return (1) - 6 * ((6) / 3) - ((3 - (4)) / (9) - 5);
+}
+
+
+// END
+
+// NAME bin_op_3
+// RET 180
+
+fn main() i32 {
+	return 1 * (10) * (2 * (9)) - ((10 / (8)) / 10 * (10));
+}
+
+
+// END
+
+// NAME bin_op_4
+// RET 0
+
+fn main() i32 {
+	return 5 * (3) * (1 / (5));
+}
+
+
+// END
+
+// NAME bin_op_5
+// RET 25
+
+fn main() i32 {
+	return ((9) + 1) + (8) + 7;
+}
+
+
+// END
+
+// NAME bin_op_6
+// RET -43
+
+fn main() i32 {
+	return (5 / (5)) / 7 + (6) - ((8) * 6 + (4 - (3)));
+}
+
+
+// END
+
+// NAME bin_op_7
+// RET -14
+
+fn main() i32 {
+	return 1 - (5) * (1 + (2));
+}
+
+
+// END
+
+// NAME bin_op_8
+// RET -17
+
+fn main() i32 {
+	return (4 * (2) - (5 * (5))) / (1) + 8 / (9);
+}
+
+
+// END
+
+// NAME bin_op_9
+// RET 9
+
+fn main() i32 {
+	return ((10) + 3) / (7) * 9;
+}
+
+
