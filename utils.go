@@ -10,8 +10,7 @@ import (
 func ReadFile(fileName string) string {
 	b, err := os.ReadFile(fileName)
 	if err != nil {
-		println("Error reading file: ", err)
-		return ""
+		log.Panic("Error reading file: ", err)
 	}
 	return string(b)
 }

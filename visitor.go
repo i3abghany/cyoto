@@ -20,7 +20,7 @@ func (v *KyotoVisitor) VisitProgram(ctx *parser.ProgramContext) interface{} {
 	for _, c := range ctx.AllFunctionDeclaration() {
 		c, ok := c.(*parser.FunctionDeclarationContext)
 		if !ok {
-			panic("not a function declaration")
+			log.Panic("not a function declaration")
 		}
 		functions[c.IDENTIFIER().GetText()] = c
 	}
