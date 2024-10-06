@@ -4,9 +4,12 @@ test: cyoto
 	go test
 
 cyoto: $(SRC_FILES) pkg/parser/kyotogrammar*
-	go fmt && go build -o cyoto
+	go build -o cyoto
 
 gen: pkg/parser/kyotogrammar%
+
+fmt: $(SRC_FILES)
+	go fmt
 
 pkg/parser/kyotogrammar%: KyotoGrammar.g4
 	mkdir -p ./pkg/parser
@@ -16,4 +19,4 @@ clean:
 	rm -f ./pkg/parser/*
 	rm -f cyoto
 
-.PHONY: gen clean
+.PHONY: gen clean test fmt
