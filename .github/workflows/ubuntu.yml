@@ -12,13 +12,25 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v3
         with:
-          go-version: 1.20.0
+          go-version: 1.20.3
 
       - name: Update apt
         run: sudo apt-get update -y
 
+      - name: Install Java
+        run: sudo apt install default-jre -y
+
       - name: Install Antlr4
-        run: sudo apt-get install antlr4 -y
+        run: wget https://www.antlr.org/download/antlr-4.13.2-complete.jar
+
+      - name: Temp parser package (needed for go get)
+        run: mkdir -p pkg/parser && echo "package.parser" >> pkg/parser/parser.go
+
+      - name: Generate the parser
+        run: java -jar antlr-4.13.2-complete.jar -Dlanguage=Go ./KyotoGrammar.g4 -o ./pkg/parser -visitor
+
+      - name: Go get antlr4
+        run: go get -d . && rm pkg/parser/parser.go && go get github.com/antlr/antlr4/runtime/Go/antlr
 
       - name: Run tests
         run: make test
