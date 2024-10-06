@@ -83,7 +83,22 @@ func Test_ReturnOnly(t *testing.T) {
 			i := NewInterpreter()
 			r := i.Interpret(p)
 			if r != tc.Expected {
-				t.Errorf("%s: got %d, want %d", name, r, tc.Expected)
+				t.Errorf("%s(%s): got %d, want %d", name, tc.Name, r, tc.Expected)
+			}
+		}
+	})
+}
+
+func Test_BinaryPrecedence(t *testing.T) {
+	name := "arith_bin_ops"
+	t.Run(name, func(t *testing.T) {
+		testcases := readTest(name)
+		for _, tc := range testcases {
+			p := Parse(tc.Code)
+			i := NewInterpreter()
+			r := i.Interpret(p)
+			if r != tc.Expected {
+				t.Errorf("%s(%s): got %d, want %d", name, tc.Name, r, tc.Expected)
 			}
 		}
 	})
