@@ -15,5 +15,4 @@ func Parse(code string) parser.IProgramContext {
 	stream := antlr.NewCommonTokenStream(lexer, antlr.TokenDefaultChannel)
 	p := parser.NewKyotoGrammarParser(stream)
 	return p.Program()
-	// antlr.ParseTreeWalkerDefault.Walk(&KyotoListener{}, p.Program())
 }
