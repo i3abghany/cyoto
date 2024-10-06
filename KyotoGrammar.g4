@@ -8,7 +8,7 @@ importStatement
     ;
 
 cdeclStatement
-    : 'cdecl' IDENTIFIER '(' parameterList? (',' '...')? ')' type ';'
+    : 'cdecl' IDENTIFIER '(' parameterList? (',' '...')? ')' ktype ';'
     ;
 
 classDeclaration
@@ -28,11 +28,11 @@ implBody
     ;
 
 methodDeclaration
-    : 'pub'? 'fn' (IDENTIFIER | '+' | '-' | '*' | '/') '(' ('self' ',')? parameterList? ')' type block
+    : 'pub'? 'fn' (IDENTIFIER | '+' | '-' | '*' | '/') '(' ('self' ',')? parameterList? ')' ktype block
     ;
 
 functionDeclaration
-    : 'fn' IDENTIFIER '(' parameterList? ')' type block
+    : 'fn' IDENTIFIER '(' parameterList? ')' ktype block
     ;
 
 parameterList
@@ -41,10 +41,10 @@ parameterList
     ;
 
 parameter
-    : type IDENTIFIER
+    : ktype IDENTIFIER
     ;
 
-type
+ktype
     : 'i8'  | 'i16' | 'i32' | 'i64'
     | 'u8'  | 'u16' | 'u32' | 'u64'
     | 'f32' | 'f64'
@@ -68,7 +68,7 @@ statement
     ;
 
 variableDeclaration
-    : type IDENTIFIER ('=' expression)?
+    : ktype IDENTIFIER ('=' expression)?
     ;
 
 assignment

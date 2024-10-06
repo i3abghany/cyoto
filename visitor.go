@@ -77,7 +77,7 @@ func (v *KyotoVisitor) VisitVariableDeclaration(ctx *parser.VariableDeclarationC
 
 	v.pInterpreter.Variables[name] = Variable{
 		Name:  name,
-		Type:  ctx.Type_().GetText(),
+		Type:  ctx.Ktype().GetText(),
 		Value: v.Visit(ctx.Expression()),
 	}
 	return nil
