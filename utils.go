@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-func ReadFile(fileName string) string {
+func readFile(fileName string) string {
 	b, err := os.ReadFile(fileName)
 	if err != nil {
 		log.Panic("Error reading file: ", err)
@@ -23,7 +23,7 @@ type TestCase struct {
 
 func readTest(name string) []TestCase {
 
-	content := ReadFile(fmt.Sprintf("tests\\inputs\\%s.kyo", name))
+	content := readFile(fmt.Sprintf("tests\\inputs\\%s.kyo", name))
 	cases := strings.Split(content, "// END")
 
 	var ret = make([]TestCase, len(cases))

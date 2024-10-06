@@ -14,23 +14,21 @@ type KyotoVisitor struct {
 
 func (v *KyotoVisitor) Visit(ctx antlr.ParseTree) interface{} { return ctx.Accept(v) }
 
-var functions = make(map[string]*parser.FunctionDeclarationContext)
-
 func (v *KyotoVisitor) VisitProgram(ctx *parser.ProgramContext) interface{} {
 	for _, c := range ctx.AllFunctionDeclaration() {
 		c, ok := c.(*parser.FunctionDeclarationContext)
 		if !ok {
 			log.Panic("not a function declaration")
 		}
-		_, ok = functions[c.IDENTIFIER().GetText()]
-		if ok {
+
+		if _, ok := v.pInterpreter.Functions[c.IDENTIFIER().GetText()]; ok {
 			log.Panicf("function redifinition: %s", c.IDENTIFIER().GetText())
 		} else {
-			functions[c.IDENTIFIER().GetText()] = c
+			v.pInterpreter.Functions[c.IDENTIFIER().GetText()] = c
 		}
 	}
 
-	main := functions["main"]
+	main := v.pInterpreter.Functions["main"]
 	if main == nil {
 		log.Panicf("no main function")
 	}

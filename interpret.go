@@ -15,12 +15,14 @@ type Variable struct {
 type Interpreter struct {
 	V         KyotoVisitor
 	Variables map[string]Variable
+	Functions map[string]*parser.FunctionDeclarationContext
 }
 
 func NewInterpreter() *Interpreter {
 	ret := &Interpreter{
 		V:         KyotoVisitor{pInterpreter: nil},
 		Variables: make(map[string]Variable),
+		Functions: make(map[string]*parser.FunctionDeclarationContext),
 	}
 	ret.V.pInterpreter = ret
 	return ret

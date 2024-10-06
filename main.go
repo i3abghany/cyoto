@@ -12,7 +12,7 @@ func main() {
 		return
 	}
 
-	p := Parse(ReadFile(args[0]))
+	p := Parse(readFile(args[0]))
 	i := NewInterpreter()
 	ret := i.Interpret(p)
 	fmt.Printf("main returned %d\n", ret)
