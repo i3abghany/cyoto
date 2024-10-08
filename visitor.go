@@ -116,6 +116,8 @@ func (v *KyotoVisitor) VisitMultiplicativeExpr(ctx *parser.MultiplicativeExprCon
 		return l.(int) * r.(int)
 	case "/":
 		return l.(int) / r.(int)
+	case "%":
+		return l.(int) % r.(int)
 	default:
 		log.Panicf("unsupported multiplicative operator: %s", op)
 		return nil
@@ -143,18 +145,30 @@ func (v *KyotoVisitor) VisitComparisonExpr(ctx *parser.ComparisonExprContext) in
 	r := v.Visit(ctx.Expression(1))
 	op := ctx.ComparisonOp().GetText()
 
-	switch op {
-	case "<":
-		return l.(int) < r.(int)
-	case "<=":
-		return l.(int) <= r.(int)
-	case ">":
-		return l.(int) > r.(int)
-	case ">=":
-		return l.(int) >= r.(int)
-	default:
-		log.Panicf("unsupported comparison operator: %s", op)
-		return nil
+	res := func() bool {
+		switch op {
+		case "<":
+			return l.(int) < r.(int)
+		case "<=":
+			return l.(int) <= r.(int)
+		case ">":
+			return l.(int) > r.(int)
+		case ">=":
+			return l.(int) >= r.(int)
+		case "==":
+			return l.(int) == r.(int)
+		case "!=":
+			return l.(int) != r.(int)
+		default:
+			log.Panicf("unsupported comparison operator: %s", op)
+			return false
+		}
+	}()
+
+	if res {
+		return 1
+	} else {
+		return 0
 	}
 }
 

@@ -1,0 +1,177 @@
+// NAME comparison_op_0
+// RET 0
+
+fn main() i32 {
+    return 1 == 2;
+}
+
+// END
+
+// NAME comparison_op_1
+// RET 1
+
+fn main() i32 {
+    return 1 != 2;
+}
+
+// END
+
+// NAME comparison_op_2
+// RET 1
+
+fn main() i32 {
+    return 1 < 2;
+}
+
+// END
+
+// NAME comparison_op_3
+// RET 1
+
+fn main() i32 {
+    return 1 <= 2;
+}
+
+// END
+
+// NAME comparison_op_4
+// RET 0
+
+fn main() i32 {
+    return 1 > 2;
+}
+
+// END
+
+// NAME comparison_op_5
+// RET 0
+
+fn main() i32 {
+    return 1 >= 2;
+}
+
+// END
+
+// NAME comparison_op_6
+// RET 1
+
+fn main() i32 {
+    return 1 == 1;
+}
+
+// END
+
+// NAME comparison_op_7
+// RET 0
+
+fn main() i32 {
+    return 1 != 1;
+}
+
+// END
+
+// NAME comparison_op_8
+// RET 0
+
+fn main() i32 {
+    return 1 < 1;
+}
+
+// END
+
+// NAME comparison_op_9
+// RET 1
+
+fn main() i32 {
+    return 1 <= 1;
+}
+
+// END
+
+// NAME comparison_op_10
+// RET 0
+
+fn main() i32 {
+    return 1 > 1;
+}
+
+// END
+
+// NAME comparison_op_11
+// RET 1
+
+fn main() i32 {
+    return 1 >= 1;
+}
+
+// END
+
+// NAME comparison_op_12
+// RET 1
+
+fn main() i32 {
+    return 1 + 2 == 3;
+}
+
+// END
+
+// NAME comparison_op_13
+// RET 1
+
+fn main() i32 {
+    return 5 * 4 == 20;
+}
+
+// END
+
+// NAME comparison_op_14
+// RET 1
+
+fn main() i32 {
+    return 10 / 2 == 5;
+}
+
+// END
+
+// NAME comparison_op_15
+// RET 1
+
+fn main() i32 {
+    return 10 % 3 == 1;
+}
+
+// END
+
+// NAME comparison_op_16
+// RET 1
+
+fn main() i32 {
+    return 1 + 2 != 4;
+}
+
+// END
+
+// NAME comparison_op_17
+// RET 1
+
+fn main() i32 {
+    return -1 < 0;
+}
+
+// END
+
+// NAME comparison_op_18
+// RET 1
+
+fn main() i32 {
+    return -10 < 8;
+}
+
+// END
+
+// NAME comparison_op_19
+// RET 1
+
+fn main() i32 {
+    return -10 < -8;
+}

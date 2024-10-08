@@ -133,3 +133,18 @@ func Test_UnaryArith(t *testing.T) {
 		}
 	})
 }
+
+func Test_ComparisonOps(t *testing.T) {
+	name := "comparison_ops"
+	t.Run(name, func(t *testing.T) {
+		testcases := readTest(name)
+		for _, tc := range testcases {
+			p := Parse(tc.Code)
+			i := NewInterpreter()
+			r := i.Interpret(p)
+			if r != tc.Expected {
+				t.Errorf("%s(%s): got %d, want %d", name, tc.Name, r, tc.Expected)
+			}
+		}
+	})
+}
