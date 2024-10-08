@@ -59,7 +59,7 @@ statement
     | assignment
     | breakStatement
     | continueStatement
-    | functionCall
+    | expression
     | returnStatement) + ';')
     | ifStatement
     | whileStatement
@@ -115,7 +115,7 @@ expression
     : IDENTIFIER                                #variableExpr
     | IDENTIFIER '{' initializerList '}'        #classLiteralExpr
     | IDENTIFIER '.' IDENTIFIER                 #memberAccessExpr
-    | IDENTIFIER '(' argumentList ')'           #functionCallExpr
+    | IDENTIFIER '(' argumentList? ')'          #functionCallExpr
     | expression '?' expression ':' expression  #ternaryExpr
     | '(' expression ')'                        #parenthesizedExpr
     | unaryOp expression                        #unaryExpr

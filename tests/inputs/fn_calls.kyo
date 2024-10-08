@@ -1,0 +1,44 @@
+// NAME fn_calls_01
+// RET 2
+
+fn f() i32 {
+    return 2;
+}
+
+fn main() i32 {
+    return f();
+}
+
+// END
+
+// NAME fn_calls_02
+// RET 3
+
+fn f() i32 {
+    return g();
+}
+
+fn g() i32 {
+    return 3;
+}
+
+fn main() i32 {
+    return f();
+}
+
+// END
+
+// NAME fn_calls_03
+// RET 6
+
+fn f() i32 {
+    return 2;
+}
+
+fn g() i32 {
+    return 4;
+}
+
+fn main() i32 {
+    return f() + g();
+}

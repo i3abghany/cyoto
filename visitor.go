@@ -60,6 +60,8 @@ func (v *KyotoVisitor) VisitStatement(ctx *parser.StatementContext) interface{} 
 		return v.VisitIfStatement(t)
 	case *parser.BlockContext:
 		return v.VisitBlock(t)
+	case *parser.ExpressionContext:
+		return v.visitExpressionStatement(t)
 	default:
 		log.Panicf("unsupported statement: %T", t)
 	}
@@ -209,4 +211,17 @@ func (v *KyotoVisitor) VisitIfStatement(ctx *parser.IfStatementContext) interfac
 		}
 	}
 	return nil
+}
+
+func (v *KyotoVisitor) VisitFunctionCallExpr(ctx *parser.FunctionCallExprContext) interface{} {
+	name := ctx.IDENTIFIER().GetText()
+	f := v.pInterpreter.Functions[name]
+	if f == nil {
+		log.Panicf("function not found: %s", name)
+	}
+	return v.VisitFunctionDeclaration(f)
+}
+
+func (v *KyotoVisitor) visitExpressionStatement(t *parser.ExpressionContext) interface{} {
+	return v.Visit(t)
 }
