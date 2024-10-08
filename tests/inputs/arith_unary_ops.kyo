@@ -1,0 +1,87 @@
+// NAME unary_op_0
+// RET 3
+
+fn main() i32 {
+    return +-+-++----+++++3;
+}
+
+// END
+
+// NAME unary_op_1
+// RET -9
+
+fn main() i32 {
+    return ++--++++--+++-9;
+}
+
+// END
+
+// NAME unary_op_2
+// RET 3
+
+fn main() i32 {
+    return ---+++-++-++++++-3;
+}
+
+// END
+
+// NAME unary_op_3
+// RET 4
+
+fn main() i32 {
+    return --+-+-+--+-++-+4;
+}
+
+// END
+
+// NAME unary_op_4
+// RET -2
+
+fn main() i32 {
+    return ---2;
+}
+
+// END
+
+// NAME unary_op_5
+// RET -9
+
+fn main() i32 {
+    return --++-+--9;
+}
+
+// END
+
+// NAME unary_op_6
+// RET 8
+
+fn main() i32 {
+    return -+--+++-+++-+-+----+8;
+}
+
+// END
+
+// NAME unary_op_7
+// RET -1
+
+fn main() i32 {
+    return ++++-1;
+}
+
+// END
+
+// NAME unary_op_8
+// RET 8
+
+fn main() i32 {
+    return +---+--+-+8;
+}
+
+// END
+
+// NAME unary_op_9
+// RET 9
+
+fn main() i32 {
+    return -+-+-+++------++-9;
+}

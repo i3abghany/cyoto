@@ -165,6 +165,8 @@ func (v *KyotoVisitor) VisitUnaryExpr(ctx *parser.UnaryExprContext) interface{} 
 	switch op {
 	case "-":
 		return -r.(int)
+	case "+":
+		return r.(int)
 	default:
 		log.Panicf("unsupported unary operator: %s", op)
 		return nil
