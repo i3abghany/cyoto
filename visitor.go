@@ -49,10 +49,9 @@ func (v *KyotoVisitor) VisitFunctionDeclaration(ctx *parser.FunctionDeclarationC
 		case *parser.ReturnStatementContext:
 			return v.VisitReturnStatement(t)
 		default:
-			v.VisitStatement(s)
+			return v.VisitStatement(s)
 		}
 	}
-
 	return nil
 }
 
@@ -62,8 +61,22 @@ func (v *KyotoVisitor) VisitStatement(ctx *parser.StatementContext) interface{} 
 		return v.VisitVariableDeclaration(t)
 	case *parser.ReturnStatementContext:
 		return v.VisitReturnStatement(t)
+	case *parser.IfStatementContext:
+		return v.VisitIfStatement(t)
+	case *parser.BlockContext:
+		return v.VisitBlock(t)
 	default:
 		log.Panicf("unsupported statement: %T", t)
+	}
+	return nil
+}
+
+func (v *KyotoVisitor) VisitBlock(ctx *parser.BlockContext) interface{} {
+	for _, s := range ctx.AllStatement() {
+		res := v.VisitStatement(s.(*parser.StatementContext))
+		if res != nil {
+			return res
+		}
 	}
 	return nil
 }
@@ -189,4 +202,16 @@ func (v *KyotoVisitor) VisitUnaryExpr(ctx *parser.UnaryExprContext) interface{} 
 
 func (v *KyotoVisitor) VisitParenthesizedExpr(ctx *parser.ParenthesizedExprContext) interface{} {
 	return v.Visit(ctx.Expression())
+}
+
+func (v *KyotoVisitor) VisitIfStatement(ctx *parser.IfStatementContext) interface{} {
+	cond := v.Visit(ctx.Expression())
+	if cond.(int) != 0 {
+		return v.Visit(ctx.Statement(0))
+	} else {
+		if ctx.Statement(1) != nil {
+			return v.Visit(ctx.Statement(1))
+		}
+	}
+	return nil
 }

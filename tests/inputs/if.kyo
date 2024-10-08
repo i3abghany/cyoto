@@ -1,0 +1,94 @@
+// NAME if_test_0
+// RET 1
+
+fn main() i32 {
+    if (1) {
+        return 1;
+    }
+
+    return 0;
+}
+
+// END
+
+// NAME if_test_1
+// RET 0
+
+fn main() i32 {
+    if (0) {
+        return 1;
+    }
+
+    return 0;
+}
+
+// END
+
+// NAME if_test_2
+// RET 10
+
+fn main() i32 {
+    if (0) {
+        return 1;
+    } else {
+        return 10;
+    }
+}
+
+// END
+
+// NAME if_test_3
+// RET 10
+
+fn main() i32 {
+    if (1) {
+        return 10;
+    } else {
+        return 1;
+    }
+}
+
+// END
+
+// NAME if_test_4
+// RET 6
+
+fn main() i32 {
+    if (1) {
+        return 6;
+    } else if (0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+// END
+
+// NAME if_test_5
+// RET 1
+
+fn main() i32 {
+    if (10) return 1;
+    else return 0;
+}
+
+// END
+
+// NAME if_test_6
+// RET 0
+
+fn main() i32 {
+    if (0) return 1;
+    else return 0;
+}
+
+// END
+
+// NAME if_test_7
+// RET 10
+
+fn main() i32 {
+    if (1) if (2) if (3) if (4) return 10;
+    return 0;
+}

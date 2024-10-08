@@ -148,3 +148,18 @@ func Test_ComparisonOps(t *testing.T) {
 		}
 	})
 }
+
+func Test_IfStatement(t *testing.T) {
+	name := "if"
+	t.Run(name, func(t *testing.T) {
+		testcases := readTest(name)
+		for _, tc := range testcases {
+			p := Parse(tc.Code)
+			i := NewInterpreter()
+			r := i.Interpret(p)
+			if r != tc.Expected {
+				t.Errorf("%s(%s): got %d, want %d", name, tc.Name, r, tc.Expected)
+			}
+		}
+	})
+}
