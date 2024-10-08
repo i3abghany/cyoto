@@ -43,14 +43,9 @@ func (v *KyotoVisitor) VisitProgram(ctx *parser.ProgramContext) interface{} {
 
 func (v *KyotoVisitor) VisitFunctionDeclaration(ctx *parser.FunctionDeclarationContext) interface{} {
 	b := ctx.Block()
-	for _, s := range b.AllStatement() {
-		s := s.(*parser.StatementContext)
-		switch t := s.GetChild(0).(type) {
-		case *parser.ReturnStatementContext:
-			return v.VisitReturnStatement(t)
-		default:
-			return v.VisitStatement(s)
-		}
+	res := v.VisitBlock(b.(*parser.BlockContext))
+	if res != nil {
+		return res
 	}
 	return nil
 }
